@@ -7,10 +7,6 @@ totalThrows <- 1
 totalHits <- 1
 piVals <- c()
 
-# prepare and store the data for plotting the dart board outline
-board <- circleData()
-border <- data.frame(x=c(-1,1,1,-1,-1), y=c(-1,-1,1,1,-1))
-
 # calculate points to use for drawing the dart board outline
 circleData <- function(center=c(0,0), diameter=2, npoints=100){
     r = diameter / 2
@@ -19,6 +15,10 @@ circleData <- function(center=c(0,0), diameter=2, npoints=100){
     yy <- center[2] + r * sin(tt)
     data.frame(x=xx, y=yy)
 }
+
+# prepare and store the data for plotting the dart board outline
+board <- circleData()
+border <- data.frame(x=c(-1,1,1,-1,-1), y=c(-1,-1,1,1,-1))
 
 # throw numDarts number of darts and get the coordinates where they hit
 throwDarts <- function(numDarts) {
