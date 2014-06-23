@@ -51,4 +51,4 @@ mode        : selfcontained # {standalone, draft}
 ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2.png) 
 
 - We can observe the &pi; value converging to the accurate value.
-- The [shinipi application](https://tanmaykm.shinyapps.io/shinypi/) allows us to do this interactively.
+- The [shinypi application](https://tanmaykm.shinyapps.io/shinypi/) allows us to do this interactively.
