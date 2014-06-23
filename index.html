@@ -1,1 +1,168 @@
-My GitHub Page
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shiny pi Calculator</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Shiny pi Calculator">
+  <meta name="author" content="Tanmay K. M.">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Shiny pi Calculator</h1>
+    <h2>An interactive Monte Carlo based demonstration for calculating pi</h2>
+    <p>Tanmay K. M.<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>History of &pi;</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Ancient Greeks defined &pi; </li>
+<li>Ratio of the circumference of a circle to its diameter. </li>
+<li>We&#39;ve found it incredibly important (used everywhere in physics, mathematics &amp; engineering)</li>
+</ul>
+
+<h2>How to Calculate?</h2>
+
+<pre><code>## [1] 3.141592653589793115998
+</code></pre>
+
+<ul>
+<li>Irrational number. Impossible to calculate perfectly precisely.</li>
+<li>Many methods to calculate.</li>
+<li>We explore one such method which is easy to understand and fun to demonstrate.</li>
+<li>It&#39;s an important example of a much more general, powerful technique, called a Monte Carlo algorithm.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Calculating &pi; (Monte Carlo Method)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Throw darts randomly at a circular dart board inscribed inside a square frame.</li>
+<li>Darts that don&#39;t hit the circle, fall in the remaining portion of the square frame.</li>
+<li>Number of darts falling inside the circle will be proportional to its area.</li>
+</ul>
+
+<hr/>
+
+<ul>
+<li>\(AreaSquare = (2r)^2 = 4 r^2\)</li>
+<li>\(AreaCircle = \pi r^2\)</li>
+<li>\(\frac{AreaCircle}{AreaSquare} = \frac{\pi}{4}\)</li>
+<li>\(\pi = 4 \frac{AreaCircle}{AreaSquare}\)</li>
+<li>\(\bbox[yellow]{\pi = 4 \frac{Darts Falling In Circle}{Total Number Of Darts}}\)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Calculating &pi; (Using shinipi)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Accuracy of the value of &pi; calculated improves with number of darts.</li>
+<li>Use random numbers to simulate the dart throws.</li>
+<li>Plot the &pi; value calculated against the number of darts thrown.</li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+<ul>
+<li>We can observe the &pi; value converging to the accurate value.</li>
+<li>The <a href="https://tanmaykm.shinyapps.io/shinypi/">shinipi application</a> allows us to do this interactively.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='History of &pi;'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Calculating &pi; (Monte Carlo Method)'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Calculating &pi; (Using shinipi)'>
+         3
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

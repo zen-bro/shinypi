@@ -1,0 +1,107 @@
+---
+title       : Shiny pi Calculator
+subtitle    : An interactive Monte Carlo based demonstration for calculating pi
+author      : Tanmay K. M.
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]     # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## History of &pi;
+
+- Ancient Greeks defined &pi; 
+- Ratio of the circumference of a circle to its diameter. 
+- We've found it incredibly important (used everywhere in physics, mathematics &amp; engineering)
+
+## How to Calculate?
+```{r echo=FALSE}
+print(pi, digits=22)
+```
+- Irrational number. Impossible to calculate perfectly precisely.
+- Many methods to calculate.
+- We explore one such method which is easy to understand and fun to demonstrate.
+- It's an important example of a much more general, powerful technique, called a Monte Carlo algorithm.
+
+--- .class #id 
+
+## Calculating &pi; (Monte Carlo Method)
+- Throw darts randomly at a circular dart board inscribed inside a square frame.
+- Darts that don't hit the circle, fall in the remaining portion of the square frame.
+- Number of darts falling inside the circle will be proportional to its area.
+
+<hr/>
+- $AreaSquare = (2r)^2 = 4 r^2$
+- $AreaCircle = \pi r^2$
+- $\frac{AreaCircle}{AreaSquare} = \frac{\pi}{4}$
+- $\pi = 4 \frac{AreaCircle}{AreaSquare}$
+- $\bbox[yellow]{\pi = 4 \frac{Darts Falling In Circle}{Total Number Of Darts}}$
+
+
+--- .class #id 
+
+## Calculating &pi; (Using shinipi)
+- Accuracy of the value of &pi; calculated improves with number of darts.
+- Use random numbers to simulate the dart throws.
+- Plot the &pi; value calculated against the number of darts thrown.
+
+```{r echo=FALSE, fig.height=4}
+library(ggplot2)
+library(grid)
+
+# cumulative values across all throws
+totalThrows <- 1
+totalHits <- 1
+piVals <- c()
+
+# throw numDarts number of darts and get the coordinates where they hit
+throwDarts <- function(numDarts) {
+    xvals <- runif(numDarts, min=-1, max=1)
+    yvals <- runif(numDarts, min=-1, max=1)
+    data.frame(x=xvals, y=yvals, typ=rep(1, numDarts))
+}
+
+# count the number of hits (point lies within the unit circle)
+countHits <- function(throws) {
+    xvals <- throws$x
+    yvals <- throws$y
+    
+    distvals <- sqrt(xvals*xvals + yvals*yvals)
+    sum(distvals <= 1)
+}
+
+# calculate pi based on the fact that number of hits would be 
+# propertional to the area of the circle.
+calcPi <- function(hits, throws) {
+    return (4*hits/throws)
+}
+
+# calculate the value of pi based on all the throws till now
+calcLargePi <- function(nHits, nThrows) {
+    totalThrows <<- totalThrows + nThrows
+    totalHits <<- totalHits + nHits
+    calcPi(totalHits, totalThrows)
+}
+
+# plot a trend showing how the calculated value of pi converges to the actual value
+plotPiVals <- function(piVals) {
+    qplot(seq_along(piVals), piVals) +
+        labs(x=NULL, y="calculated pi") + stat_smooth(se=F, method='loess') + 
+        geom_hline(aes(yintercept=pi)) +
+        theme_bw()
+}
+
+for(n in seq(1,100)) {
+    nThrows <- n * 100
+    throws <- throwDarts(nThrows)
+    nHits <- countHits(throws)
+    piVals <<- append(piVals, calcLargePi(nHits, nThrows))        
+}
+
+plotPiVals(piVals)
+```
+
+- We can observe the &pi; value converging to the accurate value.
+- The [shinipi application](https://tanmaykm.shinyapps.io/shinypi/) allows us to do this interactively.
