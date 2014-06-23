@@ -43,7 +43,7 @@ mode        : selfcontained # {standalone, draft}
 
 --- .class #id 
 
-## Calculating &pi; (Using shinipi)
+## Calculating &pi; (Using shinypi)
 - Accuracy of the value of &pi; calculated improves with number of darts.
 - Use random numbers to simulate the dart throws.
 - Plot the &pi; value calculated against the number of darts thrown.
