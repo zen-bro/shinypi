@@ -105,3 +105,19 @@ plotPiVals(piVals)
 
 - We can observe the &pi; value converging to the accurate value.
 - The [shinypi application](https://tanmaykm.shinyapps.io/shinypi/) allows us to do this interactively.
+
+--- .class #id 
+
+## Using Shinypi
+
+- Move the slider to select the number of darts to throw.
+- Shinypi application would automaticaly throw those many darts for you.
+- The points where darts hit will show up as red marks on the dart board at the extreme right.
+- The value of &pi; calculated based on these throws will be displayed.
+- A cumulative value of &pi; calculated across all your throws is displayed as well.
+
+### Experimenting:
+- Try with very small number of darts and very large number of darts. A large number of darts would give values closer to the actual value of &pi; more often.
+- Observe the plot that shows how the calculated value of &pi; (cumulative) slowly converges towards the actual value. It will take quite a number of throws, to stabilize though.
+
+
